@@ -7,3 +7,7 @@ class PostSerializer(ModelSerializer):
         model = Post
         fields = '__all__'
 
+    def to_representation(self, instance:Post):
+        rep = super().to_representation(instance)
+        rep['likes'] = instance.likes.all().count()
+        return rep
