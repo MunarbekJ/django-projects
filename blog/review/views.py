@@ -8,6 +8,9 @@ from post.models import Post, User
 
 @api_view(['POST'])
 def toggle_like(request, id):
+    user = request.user
+    if not user.is_authenticated:
+        return Response(status=401)
     user_id = request.data.get('user')
     if not user_id: # user_id = None
         return Response({"user":["this field is required"]}, status=400)
