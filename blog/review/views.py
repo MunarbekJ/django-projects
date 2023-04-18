@@ -1,10 +1,11 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.
 from django.shortcuts import get_object_or_404
-
-from .models import Like
+from rest_framework.generics import CreateAPIView, UpdateAPIView, DestroyAPIView
+from .models import Like, Comment
 from post.models import Post, User
-
+from .serializers import CommentSerailizer
 
 @api_view(['POST'])
 def toggle_like(request, id):
@@ -24,3 +25,15 @@ def toggle_like(request, id):
         Like.objects.create(user=user, post=post)
     return Response('like')
 
+class CreateCommentAPIView(CreateAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerailizer
+
+class UpdateCommentAPIView(UpdateAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerailizer
+
+class DeleteCommentAPIView(DestroyAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerailizer
+    permission_classes = [IsAuthen]
