@@ -1,6 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework.
+# from rest_framework.
 from django.shortcuts import get_object_or_404
 from rest_framework.generics import CreateAPIView, UpdateAPIView, DestroyAPIView
 from .models import Like, Comment
@@ -36,4 +36,4 @@ class UpdateCommentAPIView(UpdateAPIView):
 class DeleteCommentAPIView(DestroyAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerailizer
-    permission_classes = [IsAuthen]
+    # permission_classes = [IsAuthenti]

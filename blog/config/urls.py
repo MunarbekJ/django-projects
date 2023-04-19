@@ -22,6 +22,29 @@ from account.views import RegisterUserAPIView
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 
+# from drf_yasg import openapifrom drf_yasg.views import get_schema_view
+
+# schema_view = get_schema_view(
+#     openapi.Info(
+#         title="Python 27 API",
+#         description="makers bootcamp",
+#         default_version="v1",
+#     ),
+#     public=True
+# )
+
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title="Python 27 API",
+        description="makers bootcamp",
+        default_version="v1",
+    ),
+    public=True
+)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('listing/', posts_list),
@@ -35,6 +58,7 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view()) ,
     path('api/comment/create/', UpdateCommentAPIView.as_view()),
     path('api/comment/update/<int:pk>', DeleteCommentAPIView.as_view()),
+    path('docs/', schema_view.with_ui('swagger'))
     # path('api')
 
 ]
