@@ -7,6 +7,6 @@ router.register('products', ProductViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('categories/', CategoryListAPIView.as_view())
+    path('categories/', CategoryListAPIView.as_view()),
     path('categories/<int:pk>/' CategoryListAPIView, )
 ]
