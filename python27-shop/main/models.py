@@ -15,4 +15,10 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     descrition = models.TextField()
     quantity = models.IntegerField()
+
+    @property
+    def average_rating(self):
+        ratings = self.ratings.all()
+        if ratings.exists():
+            return sum()
     
