@@ -1,8 +1,3 @@
-# from django.shortcuts import render
-
-# # Create your views here.
-
-
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.generics import  ListCreateAPIView, DestroyAPIView
 from rest_framework.filters import SearchFilter
